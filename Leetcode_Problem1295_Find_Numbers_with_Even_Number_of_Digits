@@ -1,0 +1,39 @@
+int findNumbers(int* nums, int numsSize) {
+    int even = 0;
+    for( int i = 0 ; i < numsSize ; i++)
+        even += ((nums[i] > 9 && nums[i] < 100) || (nums[i] > 999 && nums[i] < 10000) || (nums[i] == 100000)) ? 1 : 0;
+    return even;
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+int findNumbers(int* nums, int numsSize){
+    int count1 = 0;
+    for(int i = 0 ; i < numsSize ; i++)
+    {
+        int count=0;
+        while(nums[i])
+        {
+            count++;
+            nums[i] /= 10;
+        }
+        count1 += !(count&1) ? 1 : 0;
+    }
+    return count1;
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+int findNumbers(int* nums, int numsSize) {
+    int ecount = 0;
+    for (int i = 0; i < numsSize; i++) 
+        for (int j = 10; j <= 100000; j *= 100) 
+            ecount += (nums[i] >= j && nums[i] < j * 10) ? 1 : 0;
+    return ecount;
+}
+
+
